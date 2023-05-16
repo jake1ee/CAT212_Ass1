@@ -224,87 +224,92 @@ public class RadixsortV2 {
     }
 }
 
-    public static boolean Arr_Acs(int[] arr)
+//used to check if an array is sorted in ascending order. 
+public static boolean Arr_Acs(int[] arr)
+{
+    for(int i = 1; i<arr.length; i++)
     {
-        for(int i = 1; i<arr.length; i++)
-        {
-            if(arr[i-1]>arr[i])
-            return false;
-        }
-        return true;
+        if(arr[i-1]>arr[i])
+        return false; // If the previous element is greater than the current element, the array is not sorted in ascending order
+    }
+    return true; // All elements are in ascending order
+}
+
+//used to check if an array is sorted in ascending order. 
+public static boolean Arr_Acs(float[] arr)
+{
+    for(int i = 1; i<arr.length; i++)
+    {
+        if(arr[i-1]>arr[i])
+        return false; // If the previous element is greater than the current element, the array is not sorted in ascending order
+    }
+    return true; // All elements are in ascending order
+}
+
+public static void main(String[] args)
+{
+    Scanner myObj = new Scanner(System.in);
+    Random rdm = new Random();
+    counter += 4; // Counter increment for variable assignments and object creations
+
+    System.out.println("Please enter the number of inputs for the Integer array: ");
+    int size = myObj.nextInt();
+    counter += 2; // Counter increment for variable assignment and function call
+
+    // Create an array of integers
+    int[] input = new int[size];
+    counter += 2; // Counter increment for variable assignment
+
+    counter += 2; // Counter increment for one assignment and one comparison
+    for (int i = 0; i < size; i++)
+    {
+        counter += 2; // Counter increment for one addition and one comparison
+        input[i] = rdm.nextInt(1000); // Generate a random integer and assign it to the array element
+        counter += 2; // Counter increment for one assignment and one function call
     }
 
-    public static boolean Arr_Acs(float [] arr)
+    counter++; // Counter increment for calling the radixSort() function
+    radixSort(input); // Call the radixSort() function to sort the integer array
+
+    // Print the sorted integer array
+    System.out.println("Integer Array:");
+    for (int i = 0; i < input.length; i++)
     {
-        for(int i = 1; i<arr.length; i++)
-        {
-            if(arr[i-1]>arr[i])
-            return false;
-        }
-        return true;
+        System.out.print(input[i] + ", ");
     }
 
-    public static void main(String [] args)
+    System.out.println("\n\nSteps for the integer array: " + (sortctr + counter)); // Display the total steps taken for sorting
+    counter = 4; // Reset the counter for the next part
+    sortctr = 0; // Reset the sort counter for the next part
+    System.out.println("Array Sorted Correctly: " + Arr_Acs(input)); // Check if the integer array is sorted correctly
+
+    System.out.println("\nPlease enter the number of inputs for the Floating-point array: ");
+    int size2 = myObj.nextInt();
+    counter += 2; // Counter increment for variable assignment and function call
+
+    // Create an array of floating-point numbers
+    float[] input2 = new float[size2];
+    counter++; // Counter increment for variable assignment
+
+    counter += 2; // Counter increment for one assignment and one comparison
+    for (int i = 0; i < size; i++)
     {
-        Scanner myObj = new Scanner(System.in);
-        Random rdm = new Random();
-        counter+=4;
-
-        System.out.println("Please enter number of input for Intager array: ");
-        int size = myObj.nextInt(); 
-        counter +=2;
-        // create an array of integers
-        int [] input = new int[size];
-        counter +=2;
-        counter +=2; //1 assignment, 1 compare
-        for(int i = 0; i < size; i++)
-        {
-            counter +=2; //1 addition, 1 compare
-            input[i] =rdm.nextInt(1000);
-            counter +=2; // 1 assignment, 1 function call
-        }
-        // call radixSort() function for the integer array
-        counter ++ ; //1 calling
-        radixSort(input);
-
-        // print the sorted integer array
-        System.out.println("Integer Array");
-        for(int i = 0; i <input.length; i++)
-        {
-            System.out.print(input[i]+", ");
-        }
-        
-        System.out.println("\n\nSteps for integer array : " + (sortctr+counter));
-        counter = 4; sortctr = 0;
-        System.out.println("Array Sorted Correctly: " + Arr_Acs(input));
-
-        System.out.println("\nPlease enter number of input for Floating point array: ");
-        int size2 = myObj.nextInt();
-        counter +=2; // 1 assignment, 1 function call
-        // create an array of floating point numbers
-        float [] input2 = new float[size2];
-        counter ++;
-        counter +=2;
-        for(int i = 0; i < size; i++)
-        {
-            input2[i] =rdm.nextFloat(100);
-            counter +=2;
-        }  
-
-        // call radixSort() function for the floating point number array
-        counter++;
-        radixSort(input2);
-
-        // print the sorted floating point number array
-        System.out.println("\nFloating point array:");
-        for(int i = 0; i <input2.length; i++)
-        {
-            System.out.print(input2[i]+", ");
-        }
-
-        System.out.println("\n\nSteps for floating point array : "  +(sortctr+counter));
-        System.out.println("Array Sorted Correctly: " + Arr_Acs(input2));
-        myObj.close();
+        input2[i] = rdm.nextFloat(100); // Generate a random floating-point number and assign it to the array element
+        counter += 2; // Counter increment for one assignment and one function call
     }
-    
+
+    counter++; // Counter increment for calling the radixSort() function
+    radixSort(input2); // Call the radixSort() function to sort the floating-point array
+
+    // Print the sorted floating-point number array
+    System.out.println("\nFloating-point array:");
+    for (int i = 0; i < input2.length; i++)
+    {
+        System.out.print(input2[i] + ", ");
+    }
+
+    System.out.println("\n\nSteps for the floating-point array: " + (sortctr + counter)); // Display the total steps taken for sorting
+    System.out.println("Array Sorted Correctly: " + Arr_Acs(input2)); // Check if the floating-point array is sorted correctly
+    myObj.close(); // Close the Scanner object
+}
 }
